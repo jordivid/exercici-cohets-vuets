@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: lightgray;
+    background-image: url("./../assets/nebula.jpg");
+    background-repeat: repeat-y;
+    background-position: fixed;
+    background-size: cover;
+}
+
+h1,
+h4 {
+  text-shadow: 2px 2px 2px white;
+}
+
+/* Classificació de la cursa */
+#contenidorTaula {
+    display: inline-block;
+    background-color: white;
+    border-radius: 5px;
+  }

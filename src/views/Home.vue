@@ -87,7 +87,7 @@
         <table class="table table-responsive">
           <thead>
             <th>
-              <button id="btNuke" class="bg-danger">
+              <button id="btNuke" class="bg-danger" @click="fulminarTot">
                 <img src="./../assets/atomic.png" alt="Explosió atòmica" />
               </button>
             </th>
@@ -100,13 +100,19 @@
             <th>P6</th>
           </thead>
           <tbody id="magatzem">
+            <tr v-if="granpet">
+              <td></td>
+              <td colspan="6">
+                <img src="./../assets/granexplosio.png" alt="Bolet nuclear" class="granexplosio">
+              </td>
+              <td></td>
+            </tr>
             <tr :id="cohet.codi" v-for="cohet of cohets.values()" :key="cohet.codi">
               <td>
                 <button type="button" class="btn btn-sm btn-danger" @click="eliminarCohet(cohet.codi)">X</button>
               </td>
               <td :id="'img_' + cohet.codi" class="p-1 d-flex flex-column align-items-center">
                 <img :src="cohetImage(cohet.getImage())" alt="Cohet" width="80px" height="auto">
-                <!-- <img :src="cohetExplosioImage()" alt="Cohet explotant" width="80px" height="100px"> -->
                 <span style="font-size: 10px">{{ cohet.codi }}</span>
               </td>
               <td v-for="propulsor of cohet.propulsors" :key="propulsor.id">

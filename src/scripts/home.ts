@@ -15,6 +15,7 @@ export default class Home extends Vue {
   codiElim = "";
   props: string[] = [];
   power: number[] = [];
+  granpet = false;
 
   created(): void {
     const cohets: Map<string, Cohet> = Cohet.deserialitzar("llista_cohets");
@@ -71,13 +72,16 @@ export default class Home extends Vue {
   // Elimina un cohet del store
   eliminarCohet(codi: string): void {
     this.codiElim = codi;
-    // const imatge: HTMLElement = <HTMLElement>document.getElementById("img_" + codi);
+    const element: HTMLElement = <HTMLElement>document.getElementById(codi);
+    const imatge: HTMLElement = <HTMLElement>document.getElementById("img_" + codi);
     const petard: HTMLAudioElement = <HTMLAudioElement>document.getElementById("petard");
     
+    imatge.innerHTML = "";
+    imatge.classList.add("explosio");
     petard.play();
     setTimeout(() => {
+      element.remove();
       this.suprimirCohet();
-      // imatge.innerHTML = `<img :src="${this.cohetExplosioImage()}" alt="Cohet" width="80px" height="auto">`;
     }, 1000);
   }
 
@@ -165,6 +169,21 @@ export default class Home extends Vue {
     // Obrir ruta de la cursa
     sessionStorage.setItem("voltes_cursa", numvoltes.toString());
     this.$router.push("/cursa"); 
+  }
+
+  // S'elimina tots els cohets fabricats
+  fulminarTot(): void {
+    const petard: HTMLAudioElement = <HTMLAudioElement>document.getElementById("granpetard");
+
+    if (this.cohets.size > 0) {
+      this.$store.dispatch("putCohets", new Map<string, Cohet>());
+      sessionStorage.removeItem("llista_cohets");
+      this.granpet = true;      
+      petard.play();
+      setTimeout(() => {
+        this.granpet = false;
+      }, 4000);
+    }
   }
 
 }

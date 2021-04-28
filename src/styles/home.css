@@ -18,3 +18,17 @@ h4 {
 #voltes {
   width: 150px;
 }
+
+.explosio {
+  background-image: url("./../assets/explosio.gif");
+  background-repeat: no-repeat;
+  background-attachment: none;
+  background-position: fixed;
+  background-size: cover;
+  height: 50px;
+}
+
+.granexplosio {
+  height: 200px;
+  width: auto;
+}

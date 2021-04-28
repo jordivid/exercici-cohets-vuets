@@ -136,58 +136,6 @@ export default class Cohet {
     return `rocket${this.propulsors.length}.png`;
   }
 
-  // Generació codi HTML per la taula d'informació de cohets fabricats
-  // public getInfo(): string {
-  //   let row = "";
-  //   let count = 0;
-
-  //   row += `
-  //           <tr id="${this.codi}">
-  //           <td><button id="bt_${
-  //             this.codi
-  //           }" type="button" class="btn btn-sm btn-danger">X</button></td>
-  //           <td id="img_${
-  //             this.codi
-  //           }" class="p-1 d-flex flex-column align-items-center">
-  //               <img src="@/assets/${this.getImage()}" alt="Cohet" width="80px" height="auto">
-  //               <span style="font-size: 10px">${this.codi}</span>
-  //           </td>
-  //       `;
-  //   for (const propulsor of this.propulsors) {
-  //     count++;
-  //     row += `
-  //               <td class="text-center">${propulsor.maxpower}</td>
-  //           `;
-  //   }
-  //   if (count < 6) {
-  //     for (let i: number = count; i < 6; i++) {
-  //       row += "<td></td>";
-  //     }
-  //   }
-  //   row += "</tr>";
-
-  //   return row;
-  // }
-
-  // Generació codi HTML per la taula de classificació en cursa
-  public classified(posicio: number): string {
-    let row = "";
-
-    row += `
-      <tr>
-      <td class="text-center"><span class="d-flex justify-content-center align-items-center" style="font-size: 30px">${ posicio }</span></td>
-      <td id="img_${
-        this.codi
-      }" class="p-1 d-flex flex-column justify-content-center align-items-center">
-          <img src="./../assets/${this.getImage()}" alt="Cohet" width="80px" height="auto">
-          <span style="font-size: 10px">${this.codi}</span>
-      </td>
-      </tr>
-    `;
-
-    return row;
-  }
-
   // Acceleració del cohet
   public accelerar(): boolean {
     const maxpower: number = this.getMaxPower();
